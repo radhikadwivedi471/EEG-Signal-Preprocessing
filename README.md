@@ -1,1 +1,1 @@
-# EEG-Signal-Preprocessing
+# EEG-Signal-Preprocessing and Frequency Domain Analysis
