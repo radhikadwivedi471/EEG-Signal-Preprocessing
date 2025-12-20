@@ -81,5 +81,5 @@ Compares average PSD values across different EEG frequency bands.
 
 ---
 
-## 📂 Project Structure
+
 
