@@ -104,7 +104,7 @@ The trained model is used for **live gesture recognition**, where incoming IMU d
 |---------|------------|-------------|
 | Trigger Threshold | Controls gesture sensitivity | 0.25 |
 | Post_trigger_duration	|	Lower = faster response |  0.10 |
-| PRE_trigger_duration | Captures motion start | 0.15	
+| Pre_trigger_duration | Captures motion start | 0.15	
 | Cooldown Time | Prevents repeated triggers | 0.20 |
 | Probability Threshold | Accepts lower-confidence predictions | 0.35 |
 
