@@ -1,8 +1,8 @@
-# 🎮 IMU-Based Gesture Recognition for Gaming Control
+#  IMU-Based Gesture Recognition for Gaming Control
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 This project focuses on **hand gesture recognition using IMU sensor data** to enable **touchless control of PC games** such as *Subway Surfers* and *Temple Run*.  
 Gestures are captured using a **MetaWear IMU sensor**, processed through signal preprocessing and feature extraction, and classified using a **Machine Learning model (Random Forest)**.
 
@@ -12,7 +12,7 @@ The complete pipeline is implemented in **Python**.
 
 ---
 
-## 📊 Dataset Source
+##  Dataset Source
 The dataset is **self-recorded** using a **MbientLab MetaWear IMU sensor** worn on the hand.
 
 Data is collected programmatically via Bluetooth Low Energy (BLE) and stored locally in CSV format.
@@ -25,7 +25,7 @@ Data is collected programmatically via Bluetooth Low Energy (BLE) and stored loc
 
 ---
 
-## 🧾 Dataset Description
+##  Dataset Description
 
 - **Data Type:** Inertial Measurement Unit (IMU)
 - **Signals:**  
@@ -43,7 +43,7 @@ Each gesture is recorded multiple times to build a balanced training dataset.
 
 ---
 
-## 🧹 Preprocessing Steps
+##  Preprocessing Steps
 The following preprocessing steps are applied to the raw IMU data:
 
 1. Removal of noise and irrelevant columns
@@ -56,7 +56,7 @@ Processed data is stored in the `dataset_clean/` directory.
 
 ---
 
-## 📈 Feature Extraction
+##  Feature Extraction
 From each segmented gesture window, statistical features are extracted, including:
 
 - Mean
@@ -71,7 +71,7 @@ The extracted feature vectors are compiled into a single dataset:
 
 ---
 
-## 🤖 Machine Learning Model
+##  Machine Learning Model
 
 - **Algorithm:** Random Forest Classifier
 - **Input:** Extracted statistical features
@@ -80,16 +80,16 @@ The extracted feature vectors are compiled into a single dataset:
 
 The model is trained and evaluated using standard train-test splits.
 
-Target accuracy: **≥ 85%**
+Target accuracy: **≥ 95%**
 
 ---
 
-## 📊 Plots and Visualizations
+##  Plots and Visualizations
 The plot can be helpful to visualise the data.
 
 ---
 
-## 🎮 Real-Time Gesture Control
+##  Real-Time Gesture Control
 The trained model is used for **live gesture recognition**, where incoming IMU data is classified in real time and mapped to keyboard events.
 
 - **Key Simulation:** `pyautogui`
@@ -98,7 +98,7 @@ The trained model is used for **live gesture recognition**, where incoming IMU d
 
 ---
 
-## ⚙️ Controller Fine-Tuning Parameters
+##  Controller Fine-Tuning Parameters
 
 | Parameter | Description | Default |
 |---------|------------|-------------|
@@ -112,7 +112,7 @@ These parameters can be adjusted in `play_gamee.py`.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 - record.py : Records raw IMU data
 - visualisation.py : Signal & energy visualization
@@ -127,7 +127,7 @@ These parameters can be adjusted in `play_gamee.py`.
 
 ---
 
-## 🚀 Applications
+##  Applications
 
 - Gesture-based gaming
 - Human–Computer Interaction (HCI)
@@ -137,7 +137,7 @@ These parameters can be adjusted in `play_gamee.py`.
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - Deep learning models (CNN / LSTM)
 - Personalized gesture calibration
@@ -147,7 +147,7 @@ These parameters can be adjusted in `play_gamee.py`.
 
 ---
 
-## 🧠 Author Notes
+##  Author Notes
 This project demonstrates the complete pipeline of **IMU signal acquisition, preprocessing, feature extraction, machine learning classification, and real-time system integration**.
 
 It is well-suited for:
