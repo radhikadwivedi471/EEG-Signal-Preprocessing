@@ -1,83 +1,158 @@
-# EEG-Signal-Preprocessing and Frequency Domain Analysis
-
-
-##  Project Overview
-This project focuses on the analysis of EEG signals to study the distribution of brain activity across different frequency bands. The EEG data is processed to compute Power Spectral Density (PSD) and visualize band-specific brain activity using topographic maps and comparison plots.
-
-The analysis is performed using Python and the MNE library.
-
----
-##  Dataset Source
-The EEG data used in this project was obtained from the EEG Motor Movement/Imagery Dataset available on PhysioNet. The dataset was accessed programmatically using the MNE-Python library through the `eegbci` module.
-
-The EEGBCI dataset contains EEG recordings from healthy subjects performing motor execution and motor imagery tasks. The recordings were acquired using a 64-channel EEG system following the international 10–20 electrode placement standard.
-
-Dataset Provider: PhysioNet  
-Access Method: MNE-Python (`mne.datasets.eegbci`)  
-Local Storage Path: `~/mne_data/`
----
-
-##  Dataset Description
-- **Data Type:** Electroencephalography (EEG)
-- **Signal Type:** Continuous EEG recordings
-- **Channels:** Standard EEG electrodes (e.g., 10–20 system)
-- **Sampling Frequency:** As provided in the raw EEG files
-- **File Format:** MNE-supported EEG format (e.g., .fif / .edf)
-
-The dataset contains raw EEG signals recorded during experimental conditions and is preprocessed before analysis.
+# 🎮 IMU-Based Gesture Recognition for Gaming Control
 
 ---
 
-##  Preprocessing Steps
-The following preprocessing steps are applied to the raw EEG data:
+## 📌 Project Overview
+This project focuses on **hand gesture recognition using IMU sensor data** to enable **touchless control of PC games** such as *Subway Surfers* and *Temple Run*.  
+Gestures are captured using a **MetaWear IMU sensor**, processed through signal preprocessing and feature extraction, and classified using a **Machine Learning model (Random Forest)**.
 
-1. Band-pass filtering (0.5–30 Hz)
-2. Removal of non-EEG channels
-3. Selection of EEG channels only
-4. Artifact-minimized signals used for PSD analysis
+Recognized gestures are mapped to **real-time keyboard inputs** (⬆️ ⬇️ ⬅️ ➡️), enabling intuitive and responsive game control.
 
----
-
-##  Frequency Bands Analyzed
-The EEG signals are divided into standard frequency bands:
-
-| Band  | Frequency Range (Hz) |
-|------|----------------------|
-| Delta | 0.5 – 4 |
-| Theta | 4 – 8 |
-| Alpha | 8 – 13 |
-| Beta  | 13 – 30 |
+The complete pipeline is implemented in **Python**.
 
 ---
 
-##  Plots and Visualizations
+## 📊 Dataset Source
+The dataset is **self-recorded** using a **MbientLab MetaWear IMU sensor** worn on the hand.
 
-### 1️ Raw EEG Signal Plot
-Displays time-domain EEG signals used to visually inspect signal quality.
+Data is collected programmatically via Bluetooth Low Energy (BLE) and stored locally in CSV format.
 
-![Raw EEG Signals](raw_eeg_signals.png)
-
----
-
-### 2️ Power Spectral Density (PSD) Plot
-Shows the frequency-domain representation of EEG signals computed using Welch’s method.
-
-![Average PSD Plot](psd_average.png)
+- **Sensor:** MbientLab MetaWear (MetaMotion R / RL)
+- **Sensors Used:** Accelerometer + Gyroscope
+- **Data Acquisition:** Python BLE interface
+- **Sampling Mode:** Continuous streaming
+- **Local Storage Path:** `dataset/`
 
 ---
 
-### 3️ EEG Topographic Maps (Topomaps)
-Illustrates the spatial distribution of EEG power across the scalp for each frequency band.
+## 🧾 Dataset Description
 
-![EEG Band Topomaps](topomaps_all_bands.png)
+- **Data Type:** Inertial Measurement Unit (IMU)
+- **Signals:**  
+  - Accelerometer (X, Y, Z)  
+  - Gyroscope (X, Y, Z)
+- **Sampling Frequency:** Sensor-defined (MetaWear default)
+- **File Format:** `.csv`
+- **Gestures Recorded:**
+  - UP (Jump)
+  - DOWN (Roll)
+  - LEFT (Move Left)
+  - RIGHT (Move Right)
+
+Each gesture is recorded multiple times to build a balanced training dataset.
 
 ---
 
-### 4️ Frequency Band Power Comparison (Bar Plot)
-Compares average PSD values across different EEG frequency bands.
+## 🧹 Preprocessing Steps
+The following preprocessing steps are applied to the raw IMU data:
 
-![Band Power Comparison](band_power_barplot.png)
+1. Removal of noise and irrelevant columns
+2. Signal smoothing (optional)
+3. Energy-based gesture segmentation
+4. Extraction of active motion regions
+5. Labeling segmented gestures
 
+Processed data is stored in the `dataset_clean/` directory.
+
+---
+
+## 📈 Feature Extraction
+From each segmented gesture window, statistical features are extracted, including:
+
+- Mean
+- Standard Deviation
+- Variance
+- Maximum / Minimum
+- Signal Energy
+- Axis-wise features for both accelerometer and gyroscope
+
+The extracted feature vectors are compiled into a single dataset:
+
+
+---
+
+## 🤖 Machine Learning Model
+
+- **Algorithm:** Random Forest Classifier
+- **Input:** Extracted statistical features
+- **Output:** Gesture class (UP, DOWN, LEFT, RIGHT)
+- **Model File:** `gesture_model.pkl`
+
+The model is trained and evaluated using standard train-test splits.
+
+Target accuracy: **≥ 85%**
+
+---
+
+## 📊 Plots and Visualizations
+
+
+## 🎮 Real-Time Gesture Control
+The trained model is used for **live gesture recognition**, where incoming IMU data is classified in real time and mapped to keyboard events.
+
+- **Key Simulation:** `pyautogui`
+- **Latency:** Optimized using sliding windows and cooldown logic
+- **Game Compatibility:** Any keyboard-controlled PC game
+
+---
+
+## ⚙️ Controller Fine-Tuning Parameters
+
+| Parameter | Description |
+|---------|------------|
+| Trigger Threshold | Controls gesture sensitivity |
+| Window Size | Samples used for prediction |
+| Cooldown Time | Prevents repeated triggers |
+| Probability Threshold | Accepts lower-confidence predictions |
+
+These parameters can be adjusted in `play_gamee.py`.
+
+---
+
+## 📂 Project Structure
+
+├── record.py # Records raw IMU data
+├── visualisation.py # Signal & energy visualization
+├── preprocessing.py # Gesture segmentation
+├── feature_extraction.py # Feature generation
+├── train_model.py # Model training
+├── play_gamee.py # Real-time control
+├── dataset/ # Raw data
+├── dataset_clean/ # Processed segments
+├── final_features.csv # Feature dataset
+└── gesture_model.pkl # Trained model
+
+
+---
+
+## 🚀 Applications
+
+- Gesture-based gaming
+- Human–Computer Interaction (HCI)
+- Wearable computing
+- Assistive technology
+- Smart device control
+
+---
+
+## 🔮 Future Enhancements
+
+- Deep learning models (CNN / LSTM)
+- Personalized gesture calibration
+- Multi-sensor fusion
+- Mobile and embedded deployment
+- Adaptive thresholding
+
+---
+
+## 🧠 Author Notes
+This project demonstrates the complete pipeline of **IMU signal acquisition, preprocessing, feature extraction, machine learning classification, and real-time system integration**.
+
+It is well-suited for:
+- Signal Processing projects
+- Machine Learning with time-series data
+- Wearable sensor research
+- Final-year engineering projects
 
 ---
 
