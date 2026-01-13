@@ -98,12 +98,13 @@ The trained model is used for **live gesture recognition**, where incoming IMU d
 
 ## ⚙️ Controller Fine-Tuning Parameters
 
-| Parameter | Description |
-|---------|------------|
-| Trigger Threshold | Controls gesture sensitivity |
-| Window Size | Samples used for prediction |
-| Cooldown Time | Prevents repeated triggers |
-| Probability Threshold | Accepts lower-confidence predictions |
+| Parameter | Description | Default |
+|---------|------------|-------------|
+| Trigger Threshold | Controls gesture sensitivity | 0.25 |
+| Post_trigger_duration	|	Lower = faster response |  0.10 |
+| PRE_trigger_duration | Captures motion start | 0.15	
+| Cooldown Time | Prevents repeated triggers | 0.20 |
+| Probability Threshold | Accepts lower-confidence predictions | 0.35 |
 
 These parameters can be adjusted in `play_gamee.py`.
 
