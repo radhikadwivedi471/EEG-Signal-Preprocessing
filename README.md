@@ -87,6 +87,8 @@ Target accuracy: **≥ 85%**
 ## 📊 Plots and Visualizations
 The plot can be helpful to visualise the data.
 
+---
+
 ## 🎮 Real-Time Gesture Control
 The trained model is used for **live gesture recognition**, where incoming IMU data is classified in real time and mapped to keyboard events.
 
