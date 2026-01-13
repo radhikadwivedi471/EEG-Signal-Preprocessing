@@ -112,16 +112,15 @@ These parameters can be adjusted in `play_gamee.py`.
 
 ## 📂 Project Structure
 
-├── record.py # Records raw IMU data
-├── visualisation.py # Signal & energy visualization
-├── preprocessing.py # Gesture segmentation
-├── feature_extraction.py # Feature generation
-├── train_model.py # Model training
-├── play_gamee.py # Real-time control
-├── dataset/ # Raw data
-├── dataset_clean/ # Processed segments
-├── final_features.csv # Feature dataset
-└── gesture_model.pkl # Trained model
+- record.py : Records raw IMU data
+- visualisation.py : Signal & energy visualization
+- preprocessing.py : Gesture segmentation
+- feature_extraction.py : Feature generation
+- train_model.py : Model training
+- play_gamee.py : Real-time control
+- dataset :  Raw data
+- final_features.csv : Feature dataset
+- gesture_model.pkl : Trained model
 
 
 ---
